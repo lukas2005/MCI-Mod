@@ -11,13 +11,14 @@ public class ModItems {
 	public static ArrayList<MCIItem> itemList = new ArrayList<MCIItem>();
 	
 	public static void main() {
-		itemList.add((MCIItem) new MCIItem("Example Dude", "Base Item Test", MCIItemType.MISC));
+		new MCIItem("Example Dude", "Base Item Test", "This is a test item", MCIItemType.MISC);
+		
 		try {
 			while (MySqlConnector.itemsQuery.next()) {
 					
 					System.out.println("Registering item: " + MySqlConnector.itemsQuery.getString("name"));
 					
-					itemList.add(new MCIItem(MySqlConnector.itemsQuery.getString("author"), MySqlConnector.itemsQuery.getString("name"), null));
+					new MCIItem(MySqlConnector.itemsQuery.getString("author"), MySqlConnector.itemsQuery.getString("name"), MySqlConnector.itemsQuery.getString("lore"), null);
 					
 			}
 		} catch (Exception e) {

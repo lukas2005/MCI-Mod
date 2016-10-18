@@ -14,12 +14,15 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class MCIItem extends Item {
 	
 	private String Author;
+	private String Lore;
 	
-	public MCIItem(String Author, String Name, MCIItemType type) {
+	public MCIItem(String Author, String Name, String lore, MCIItemType type) {
 		setUnlocalizedName(Name);
 		setRegistryName(Reference.MODID, Name.toLowerCase().replace(" ", "_"));
 		this.Author = Author;
+		this.Lore = lore;
 		GameRegistry.register(this);
+		ModItems.itemList.add(this);
 	}
 	
 	@Override
@@ -29,6 +32,14 @@ public class MCIItem extends Item {
 			stack.getItem().onCreated(stack, playerIn.getEntityWorld(), playerIn);
 		}
 		NBTTagCompound nbt = stack.getTagCompound();
+		
+		String[] lore = nbt.getString("lore").split("\\|", -1);
+		
+		for (String s : lore) {
+			
+			tooltip.add(s);
+			
+		}
 		
 		tooltip.add("by: " + nbt.getString("author"));
 		
@@ -44,6 +55,7 @@ public class MCIItem extends Item {
 		}
 
 		nbt.setString("author", Author);
+		nbt.setString("lore", Lore);
 		
 		stack.setTagCompound(nbt);	
 	}
