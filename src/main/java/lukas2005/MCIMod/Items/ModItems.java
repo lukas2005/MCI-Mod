@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import lukas2005.MCIMod.MCIItemType;
 import lukas2005.MCIMod.MySqlConnector;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 public class ModItems {
