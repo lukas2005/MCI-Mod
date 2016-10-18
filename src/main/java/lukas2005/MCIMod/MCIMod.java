@@ -26,19 +26,21 @@ public class MCIMod {
 		MySqlConnector.main();
 		
 		ModItems.main();
-		proxy.main();
+		proxy.preInit(e);
 	}
 	
 	@EventHandler
 	public static void init(FMLInitializationEvent e) {
 		System.out.println("Init!");
+		
+		proxy.init(e);
 	}
 	
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent e) {
 		System.out.println("Post Init!");
 		
-		
+		proxy.postInit(e);
 	}
 	
 }

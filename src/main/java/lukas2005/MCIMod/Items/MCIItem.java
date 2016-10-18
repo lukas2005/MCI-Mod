@@ -22,7 +22,7 @@ public class MCIItem extends Item {
 		this.Author = Author;
 		this.Lore = lore;
 		GameRegistry.register(this);
-		ModItems.itemList.add(this);
+		ModItems.ITEMS.put(Name.toLowerCase().replace(" ", "_"), this);
 	}
 	
 	@Override
