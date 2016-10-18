@@ -1,0 +1,16 @@
+[
+{
+  "modid": "mci",
+  "name": "Minecraft Crafting Ideas Mod",
+  "description": "Mod Dodaj¹cy Itemy z Serii Minecraft Crafting Ideas Na Kanale RoxMB na YT",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["lukas2005","RoxMB"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
