@@ -8,11 +8,10 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 public class ModItems {
 	
-	public static MCIItem Test;
 	public static ArrayList<MCIItem> itemList = new ArrayList<MCIItem>();
 	
 	public static void main() {
-		Test = (MCIItem) new MCIItem("Example Dude", "Base Item Test", MCIItemType.MISC);
+		itemList.add((MCIItem) new MCIItem("Example Dude", "Base Item Test", MCIItemType.MISC));
 		try {
 			while (MySqlConnector.itemsQuery.next()) {
 					
