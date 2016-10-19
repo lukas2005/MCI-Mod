@@ -19,7 +19,6 @@ public class ModItems {
 					System.out.println("Registering item: " + MySqlConnector.itemsQuery.getString("name"));
 					
 					new MCIItem(MySqlConnector.itemsQuery.getString("author"), MySqlConnector.itemsQuery.getString("name"), MySqlConnector.itemsQuery.getString("lore"), null);
-					
 			}
 		} catch (Exception e) {
 		
@@ -33,7 +32,6 @@ public class ModItems {
 		for (MCIItem item : ITEMS.values()) {
 			System.out.println("Register Render For: " + item.getRegistryName());
 			ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
-			
 		}
 		
 	}

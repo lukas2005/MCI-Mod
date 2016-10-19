@@ -13,6 +13,13 @@ public class Reference {
 	public static final String DEPENDENCIES = "";
 	
 	public static final String CLIENT_PROXY = "lukas2005.MCIMod.proxy.ClientProxy";
-	public static final String SERVER_PROXY = "lukas2005.MCIMod.proxy.ServerProxy";;
+	public static final String SERVER_PROXY = "lukas2005.MCIMod.proxy.ServerProxy";
+	
+	public static final String MYSQL_URL = "localhost";
+	public static final String MYSQL_DATABASE = "mcimoddatabase";
+	public static final String MYSQL_PORT = "3306";
+	public static final String MYSQL_PARAMS = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	public static final String MYSQL_USER = "root";
+	public static final String MYSQL_PASSWD = "";
 	
 }

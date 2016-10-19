@@ -14,12 +14,8 @@ public class MySqlConnector {
         
         try
         {
-            String userName = "root";
-            String password = "";
-            String sterownik = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://localhost:3306/mcimoddatabase?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            Class.forName(sterownik);
-            conn = DriverManager.getConnection(url, userName, password);
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://" + Reference.MYSQL_URL + ":" + Reference.MYSQL_PORT + "/" + Reference.MYSQL_DATABASE + "?" + Reference.MYSQL_PARAMS, Reference.MYSQL_USER, Reference.MYSQL_PASSWD);
             System.out.println("Database connection established");
             st = conn.createStatement();
             ResultSet query = st.executeQuery("SELECT * FROM items");

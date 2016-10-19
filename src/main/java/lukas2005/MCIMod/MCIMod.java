@@ -32,7 +32,6 @@ public class MCIMod {
 	@EventHandler
 	public static void init(FMLInitializationEvent e) {
 		System.out.println("Init!");
-		
 		proxy.init(e);
 	}
 	

@@ -17,6 +17,10 @@ public class MCIItem extends Item {
 	private String Lore;
 	
 	public MCIItem(String Author, String Name, String lore, MCIItemType type) {
+		init(Author, Name, lore, type);
+	}
+	
+	public void init(String Author, String Name, String lore, MCIItemType type) {
 		setUnlocalizedName(Name);
 		setRegistryName(Reference.MODID, Name.toLowerCase().replace(" ", "_"));
 		this.Author = Author;
