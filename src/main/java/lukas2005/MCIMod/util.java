@@ -20,13 +20,12 @@ public class util {
 		if (loadedClass != null) {
 			if (loadedClass.getSuperclass().getName() == MCIItem.class.getName()) { 
 			
-				Object item = null;
 				try {
-					item = (Object) loadedClass.getConstructors()[0].newInstance(args);
+					loadedClass.getConstructors()[0].newInstance(args);
 				} catch (Exception e) {
-					e.printStackTrace(System.err);
+					Logger.error(e.getMessage());
 				}
-				System.out.println(item.getClass().getName());
+				Logger.debug(loadedClass.getName());
 				
 			}
 		}

@@ -17,7 +17,7 @@ public class MySqlConnector {
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://" + Reference.MYSQL_URL + ":" + Reference.MYSQL_PORT + "/" + Reference.MYSQL_DATABASE + "?" + Reference.MYSQL_PARAMS, Reference.MYSQL_USER, Reference.MYSQL_PASSWD);
-            System.out.println("Database connection established");
+            Logger.info("Database connection established");
             st = conn.createStatement();
             ResultSet query = st.executeQuery("SELECT * FROM items");
             itemsQuery = query;
