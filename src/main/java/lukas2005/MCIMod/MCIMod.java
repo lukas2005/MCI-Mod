@@ -21,7 +21,10 @@ public class MCIMod {
 	
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent e) {
-		System.out.println("Pre Init!");
+		Logger.setLogger(e.getModLog());
+		Logger.info("Pre Init!");
+		
+		if (!Reference.MCI_DIR.exists()) Reference.MCI_DIR.mkdirs();
 		
 		MySqlConnector.main();
 		
@@ -31,13 +34,13 @@ public class MCIMod {
 	
 	@EventHandler
 	public static void init(FMLInitializationEvent e) {
-		System.out.println("Init!");
+		Logger.info("Init!");
 		proxy.init(e);
 	}
 	
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent e) {
-		System.out.println("Post Init!");
+		Logger.info("Post Init!");
 		
 		proxy.postInit(e);
 	}

@@ -9,7 +9,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MCIItem extends Item {
 	
@@ -17,16 +16,14 @@ public class MCIItem extends Item {
 	private String Lore;
 	
 	public MCIItem(String Author, String Name, String lore, MCIItemType type) {
-		init(Author, Name, lore, type);
-	}
-	
-	public void init(String Author, String Name, String lore, MCIItemType type) {
-		setUnlocalizedName(Name);
-		setRegistryName(Reference.MODID, Name.toLowerCase().replace(" ", "_"));
-		this.Author = Author;
-		this.Lore = lore;
-		GameRegistry.register(this);
-		ModItems.ITEMS.put(Name.toLowerCase().replace(" ", "_"), this);
+		if (Name != null) {
+			setUnlocalizedName(Name);
+			setRegistryName(Reference.MODID, Name.toLowerCase().replace(" ", "_"));
+			this.Author = Author;
+			this.Lore = lore;
+			
+			ModItems.ITEMS.put(Name.toLowerCase().replace(" ", "_"), this);
+		}
 	}
 	
 	@Override

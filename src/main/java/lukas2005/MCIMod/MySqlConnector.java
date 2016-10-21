@@ -3,6 +3,7 @@ package lukas2005.MCIMod;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MySqlConnector {
@@ -21,14 +22,13 @@ public class MySqlConnector {
             ResultSet query = st.executeQuery("SELECT * FROM items");
             itemsQuery = query;
         }
-        catch (Exception e)
+        catch (SQLException e)
         {
-            System.err.println("ERROR:" + e.getMessage());
-        }
-        finally
-        {
-
-        }
+        	Logger.warn("Cannot connect to database. Running on local backup", e);
+        } catch (Exception e) {
+			// TODO Auto-generated catch block
+        	Logger.error(e.getMessage());
+		}
     }
 
 }

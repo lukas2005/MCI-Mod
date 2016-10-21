@@ -9,20 +9,19 @@ public class ClientProxy implements IProxy {
 
 	@Override
 	public void preInit(FMLPreInitializationEvent e) {
-		// TODO Auto-generated method stub
+		
 		ModItems.registerRenders();
+		
 	}
 
 	@Override
 	public void init(FMLInitializationEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void postInit(FMLPostInitializationEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
-
+	
 }

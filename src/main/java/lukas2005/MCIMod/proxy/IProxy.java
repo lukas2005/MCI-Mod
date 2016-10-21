@@ -10,6 +10,6 @@ public interface IProxy {
 	
 	public void init(FMLInitializationEvent e);		
 	
-	public void postInit(FMLPostInitializationEvent e);		
+	public void postInit(FMLPostInitializationEvent e);
 	
 }

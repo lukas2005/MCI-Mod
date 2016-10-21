@@ -1,5 +1,7 @@
 package lukas2005.MCIMod;
 
+import java.io.File;
+
 public class Reference {
 
 	public static final String MODID = "mci";
@@ -21,5 +23,7 @@ public class Reference {
 	public static final String MYSQL_PARAMS = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	public static final String MYSQL_USER = "root";
 	public static final String MYSQL_PASSWD = "";
+	
+	public static final File MCI_DIR = new File(util.getMCPath() + "/MCI_RESOURCES");
 	
 }
