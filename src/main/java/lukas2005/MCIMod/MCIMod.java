@@ -2,6 +2,9 @@ package lukas2005.MCIMod;
 
 import lukas2005.MCIMod.Items.ModItems;
 import lukas2005.MCIMod.proxy.IProxy;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -44,5 +47,15 @@ public class MCIMod {
 		
 		proxy.postInit(e);
 	}
+	
+	public static final CreativeTabs MISC_TAB = new CreativeTabs("MciMisc") {
+
+		@Override
+		public Item getTabIconItem() {
+			// TODO Auto-generated method stub
+			return Items.ENDER_EYE;
+		}
+		
+	};
 	
 }

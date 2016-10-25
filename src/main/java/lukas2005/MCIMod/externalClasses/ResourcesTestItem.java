@@ -1,6 +1,6 @@
 package lukas2005.MCIMod.externalClasses;
 
-import lukas2005.MCIMod.MCIItemType;
+import lukas2005.MCIMod.Enum.MCIItemType;
 import lukas2005.MCIMod.Items.MCIItem;
 
 public class ResourcesTestItem extends MCIItem {

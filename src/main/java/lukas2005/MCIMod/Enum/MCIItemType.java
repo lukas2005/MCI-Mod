@@ -1,4 +1,4 @@
-package lukas2005.MCIMod;
+package lukas2005.MCIMod.Enum;
 
 public enum MCIItemType {
 
