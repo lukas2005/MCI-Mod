@@ -2,8 +2,9 @@ package lukas2005.MCIMod.Items;
 
 import java.util.List;
 
-import lukas2005.MCIMod.MCIItemType;
 import lukas2005.MCIMod.Reference;
+import lukas2005.MCIMod.util;
+import lukas2005.MCIMod.Enum.MCIItemType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,6 +15,7 @@ public class MCIItem extends Item {
 	
 	private String Author;
 	private String Lore;
+	private MCIItemType type;
 	
 	public MCIItem(String Author, String Name, String lore, MCIItemType type) {
 		if (Name != null) {
@@ -21,7 +23,8 @@ public class MCIItem extends Item {
 			setRegistryName(Reference.MODID, Name.toLowerCase().replace(" ", "_"));
 			this.Author = Author;
 			this.Lore = lore;
-			
+			util.setMCICat(this, type);
+			this.type = type;
 			ModItems.ITEMS.put(Name.toLowerCase().replace(" ", "_"), this);
 		}
 	}
@@ -57,6 +60,7 @@ public class MCIItem extends Item {
 
 		nbt.setString("author", Author);
 		nbt.setString("lore", Lore);
+		nbt.setString("type", type.toString());
 		
 		stack.setTagCompound(nbt);	
 	}

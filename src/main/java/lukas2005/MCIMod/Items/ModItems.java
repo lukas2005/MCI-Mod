@@ -6,7 +6,6 @@ import lukas2005.MCIMod.Logger;
 import lukas2005.MCIMod.MySqlConnector;
 import lukas2005.MCIMod.Reference;
 import lukas2005.MCIMod.util;
-import lukas2005.MCIMod.externalClasses.ResourcesTestItem;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -18,7 +17,7 @@ public class ModItems {
 		try {
 			while (MySqlConnector.itemsQuery.next()) {
 					
-				util.loadItem(Reference.MCI_DIR + "\\classes.jar", "lukas2005.MCIMod.externalClasses." + MySqlConnector.itemsQuery.getString("name").replaceAll(" ", ""), new Object[]{MySqlConnector.itemsQuery.getString("Author"), MySqlConnector.itemsQuery.getString("name"), MySqlConnector.itemsQuery.getString("lore"), null});
+				util.loadItem(Reference.MCI_DIR + "\\classes.jar", "lukas2005.MCIMod.externalClasses." + MySqlConnector.itemsQuery.getString("name").replaceAll(" ", ""), new Object[]{MySqlConnector.itemsQuery.getString("Author"), MySqlConnector.itemsQuery.getString("name"), MySqlConnector.itemsQuery.getString("lore"), util.getItemTypeFromString(MySqlConnector.itemsQuery.getString("type"))});
 				//new MCIItem(MySqlConnector.itemsQuery.getString("author"), MySqlConnector.itemsQuery.getString("name"), MySqlConnector.itemsQuery.getString("lore"), null);
 				//MCIItem item = (MCIItem)new ResourcesTestItem("", "Res Test", "", null);
 				
