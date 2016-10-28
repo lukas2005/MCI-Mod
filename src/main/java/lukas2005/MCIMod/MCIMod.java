@@ -1,5 +1,9 @@
 package lukas2005.MCIMod;
 
+import java.io.File;
+
+import org.apache.logging.log4j.LogManager;
+
 import lukas2005.MCIMod.Items.ModItems;
 import lukas2005.MCIMod.proxy.IProxy;
 import net.minecraft.creativetab.CreativeTabs;
@@ -24,14 +28,26 @@ public class MCIMod {
 	
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent e) {
-		Logger.setLogger(e.getModLog());
+		Logger.setLogger(LogManager.getLogger(Reference.MODID.toUpperCase()));
 		Logger.info("Pre Init!");
 		
+		
+		if (new File(e.getSourceFile().getParentFile().getPath() + "\\bin").exists()) {
+			
+			Reference.MCI_DIR = e.getSourceFile().getParentFile();
+			
+		} else {
+			
+			Reference.MCI_DIR = new File(e.getSourceFile().getParent() + "\\MCI_RESOURCES");
+			
+		}
 		if (!Reference.MCI_DIR.exists()) Reference.MCI_DIR.mkdirs();
 		
 		MySqlConnector.main();
 		
 		ModItems.main();
+		Logger.info("Loaded and registered succesfully: " + ModItems.ITEMS.size() + " Items");
+		
 		proxy.preInit(e);
 	}
 	

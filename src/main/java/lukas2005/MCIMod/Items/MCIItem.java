@@ -2,6 +2,7 @@ package lukas2005.MCIMod.Items;
 
 import java.util.List;
 
+import lukas2005.MCIMod.Logger;
 import lukas2005.MCIMod.Reference;
 import lukas2005.MCIMod.util;
 import lukas2005.MCIMod.Enum.MCIItemType;
@@ -23,6 +24,7 @@ public class MCIItem extends Item {
 			setRegistryName(Reference.MODID, Name.toLowerCase().replace(" ", "_"));
 			this.Author = Author;
 			this.Lore = lore;
+			Logger.info("Loaded succesfully: " + this.getRegistryName());
 			util.setMCICat(this, type);
 			this.type = type;
 			ModItems.ITEMS.put(Name.toLowerCase().replace(" ", "_"), this);
