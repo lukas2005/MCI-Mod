@@ -7,6 +7,8 @@ import org.apache.logging.log4j.MarkerManager;
 public class Logger {
 	public static final Marker MOD_MARKER = MarkerManager.getMarker(Reference.MODID.toUpperCase());
 
+	public static final Marker STACKTRACE_MARKER = MarkerManager.getMarker("Stack Trace Marker");
+	
 	private static org.apache.logging.log4j.Logger logger;
 
 	public static void log(Level level, String format, Object... data) {
@@ -99,6 +101,34 @@ public class Logger {
 							 Object... data) {
 		log(Level.DEBUG, marker, throwable, format, data);
 	}
+	
+	public static void printStackTrace(Throwable t, Level level) {
+			log(level, STACKTRACE_MARKER, t.getClass().getName() + ": " + t.getMessage());
+            StackTraceElement[] trace = t.getStackTrace();
+            for (StackTraceElement traceElement : trace)
+            	log(level, STACKTRACE_MARKER, "\tat " + traceElement);
+
+            // Print suppressed exceptions, if any
+            for (Throwable se : t.getSuppressed()) {
+            	
+            	log(level, STACKTRACE_MARKER, se, se.getMessage(), trace);
+                
+            }
+               
+            // Print cause, if any
+            Throwable ourCause = t.getCause();
+            if (ourCause != null) {
+            	
+            	log(level, STACKTRACE_MARKER, ourCause, ourCause.getMessage(), trace);
+                
+            }
+    }
+	
+	public static void printStackTrace(Throwable t) {
+		
+		printStackTrace(t, Level.ERROR);
+		
+	}
 
 	public static void setLogger(org.apache.logging.log4j.Logger logger) {
 		if (Logger.logger != null) {
@@ -106,6 +136,10 @@ public class Logger {
 		}
 
 		Logger.logger = logger;
+	}
+	
+	public static org.apache.logging.log4j.Logger getLogger() {
+		return Logger.logger;
 	}
 
 
