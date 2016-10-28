@@ -16,15 +16,20 @@ public class ModItems {
 	public static void main() {
 		try {
 			while (MySqlConnector.itemsQuery.next()) {
+				if ((boolean) util.searchItems("loadExtClass")) {
 					
-				util.loadItem(Reference.MCI_DIR + "\\classes.jar", "lukas2005.MCIMod.externalClasses." + MySqlConnector.itemsQuery.getString("name").replaceAll(" ", ""), new Object[]{MySqlConnector.itemsQuery.getString("Author"), MySqlConnector.itemsQuery.getString("name"), MySqlConnector.itemsQuery.getString("lore"), util.getItemTypeFromString(MySqlConnector.itemsQuery.getString("type"))});
-				//new MCIItem(MySqlConnector.itemsQuery.getString("author"), MySqlConnector.itemsQuery.getString("name"), MySqlConnector.itemsQuery.getString("lore"), null);
-				//MCIItem item = (MCIItem)new ResourcesTestItem("", "Res Test", "", null);
-				
+					//util.loadItem(Reference.MCI_DIR + "\\classes.jar", "lukas2005.MCIMod.externalClasses." + MySqlConnector.itemsQuery.getString("name").replaceAll(" ", ""), "Example Dude", "Resources Test Item", "test item", MCIItemType.MISC);
+					util.loadItem(Reference.MCI_DIR + "\\classes.jar", "lukas2005.MCIMod.externalClasses." + MySqlConnector.itemsQuery.getString("name").replaceAll(" ", ""), (String) util.searchItems("author"), (String) util.searchItems("name"), (String) util.searchItems("lore"), util.getItemTypeFromString((String) util.searchItems("type")));
+
+				} else {
+					
+					new MCIItem((String) util.searchItems("author"), (String) util.searchItems("name"), (String) util.searchItems("lore"), util.getItemTypeFromString((String) util.searchItems("type")));
+					
+				}
 			}
 		} catch (Exception e) {
 			
-			Logger.error(e.getMessage(), e);
+			Logger.printStackTrace(e);
 			
 		}
 		registerItems();
@@ -33,7 +38,7 @@ public class ModItems {
 	private static void registerItems() {
 		for (MCIItem item : ITEMS.values()) {
 		
-			Logger.info("Registering item: " + item.getUnlocalizedName());
+			Logger.info("Registering item: " + item.getRegistryName());
 			GameRegistry.register(item);
 			
 		}
@@ -42,7 +47,7 @@ public class ModItems {
 	public static void registerRenders() {
 		for (MCIItem item : ITEMS.values()) {
 			
-			Logger.info("Registering render for item: " + item.getUnlocalizedName());
+			Logger.info("Registering render for item: " + item.getRegistryName());
 			ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 			
 		}
